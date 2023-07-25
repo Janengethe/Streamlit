@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import seaborn as sns
 
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # Display the raw data
 # Question 1: Show the average sepal length for each species
 # Question 2: Display a scatter plot comparing two features
@@ -62,3 +64,21 @@ if selected_species:
     st.dataframe(filtered_data)
 else:
     st.write("No species selected.")
+
+
+# Question 4: Display a pairplot for the selected species
+if st.checkbox("Display a pairplot for the selected species"):
+    st.subheader("Pairplot for selected species")
+
+    if selected_species:
+        sns.pairplot(filtered_data, hue="species")
+    else:
+        sns.pairplot(data, hue="species")
+    st.pyplot()
+
+# Question 5: Show the distribution of a selected feature
+st.subheader("Distribution of a Selected Feature")
+selected_feature = st.selectbox("Select a feature to display its distribution:", data.columns[:-1])
+
+hist_plot = px.histogram(data, x=selected_feature, color="species", nbins=30, marginal="box", hover_data=data.columns)
+st.plotly_chart(hist_plot)
