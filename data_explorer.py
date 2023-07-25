@@ -31,3 +31,34 @@ if st.checkbox("Show Data"):
 
 
 # The average sepal length for each species
+if st.checkbox("Show Average sepal Length"):
+    st.subheader("Average sepal length for each species")
+    average = data.groupby("species")["sepal_length"].mean()
+    st.write(average)
+
+# Question 2: Display a scatter plot comparing two features
+st.subheader("Scatter Plot")
+st.write("Sepal Length and Petal Length")
+fig = px.scatter(data, x="sepal_length", y="petal_length", color="species")
+st.plotly_chart(fig)
+
+st.write("Sepal Length and Sepal Width")
+fig = px.scatter(data, x="sepal_length", y="sepal_width", color="species")
+st.plotly_chart(fig)
+
+st.subheader("Compare two features using a scatter plot")
+feature_1 = st.selectbox("Select the first feature:", data.columns[:-1])
+feature_2 = st.selectbox("Select the second feature:", data.columns[:-1])
+
+scatter_plot = px.scatter(data, x=feature_1, y=feature_2, color="species", hover_name="species")
+st.plotly_chart(scatter_plot)
+
+# Question 3: Filter data based on species
+st.subheader("Filter data based on species")
+selected_species = st.multiselect("Select species to display:", data["species"].unique())
+
+if selected_species:
+    filtered_data = data[data["species"].isin(selected_species)]
+    st.dataframe(filtered_data)
+else:
+    st.write("No species selected.")
