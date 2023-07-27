@@ -12,8 +12,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Question 4: Display a pairplot for the selected species
 # Question 5: Show the distribution of a selected feature
 
-st.subheader("Name: Jane Ng'ethe, Email: janengethew@gmail.com")
-
 def load_data():
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
     column_names = ["sepal_length", "sepal_width", "petal_length", "petal_width", "species"]
@@ -25,6 +23,7 @@ data = load_data()
 
 st.title("Iris Dataset")
 st.write("creating an Interactive Data Explorer using VSCode and Deploying to Streamlit Share")
+st.subheader("Name: Jane Ng'ethe, Email: janengethew@gmail.com")
 
 
 # Display the raw data
