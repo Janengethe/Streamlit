@@ -12,6 +12,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # Question 4: Display a pairplot for the selected species
 # Question 5: Show the distribution of a selected feature
 
+st.write("Name: Jane Ng'ethe, Email: janengethew@gmail.com")
 
 def load_data():
     url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
